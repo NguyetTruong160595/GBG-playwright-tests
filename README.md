@@ -64,11 +64,13 @@ Step 4: Project Structure
 
 - pages/: Page Object
 
-- test-data.ts: Test data generators
+- types/: Types of variables
 
-- env.ts: base URL
+- utils/test-data.ts: Test data generators
 
-- selectors: xpath of all elements in this page
+- utils/env.ts: base URL
+
+- utils/helpers.ts: Reusable functions
 
 - playwright.config.ts: Configuration file
 

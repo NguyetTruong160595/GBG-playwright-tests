@@ -1,27 +1,49 @@
+// tests/newsletter.spec.ts
 import { test, expect } from '@playwright/test';
-import { selectors } from '../utils/selectors';
-import { data } from '../utils/test-data';
-import { env } from '../utils/env';
+import { NewsletterPage } from '../pages/newsletter.page';
+import { TestData } from '../utils/test-data';
+import { env } from '../utils/env'
+import { beforeEach, afterEach } from '../hooks/testHooks';
 
-test('TC-016 Subscribe to newsletter with a valid email @functional', async ({ page }) => {
+test.describe('Newsletter Subscription Tests', () => {
 
-  //Access to Champions League 2025 page
-  await page.goto(env.baseURL + data.path);
+  let newsletterPage: NewsletterPage;
 
-  //Click accept button
-  await page.waitForSelector(selectors.acceptButton, { state: 'visible' });
-  await page.locator(selectors.acceptButton).click();
+  test.beforeEach(async ({ page }) => {
+    newsletterPage = new NewsletterPage(page);
+    await page.goto(env.baseURL);
+  });
 
-  // Scroll or locate newsletter section and enter name to textbox
-  await page.waitForSelector(selectors.nameInput, { state: 'visible' });
-  await page.locator(selectors.nameInput).fill(data.validName);
+  test.beforeEach(async ({ page }, testInfo) => {
+    await beforeEach(page, testInfo);
+  });
 
-  //Enter valid email into email textbox
-  await page.locator(selectors.emailInput).fill(data.validEmail);
+  test.afterEach(async ({ page }, testInfo) => {
+    await afterEach(page, testInfo);
+  });
 
-  //Click subscribe button
-  await page.locator(selectors.subscribeButton).click();
+  test('Successful subscription with valid name and email @positive', async () => {
+    // Generate random email
+    const testUser = TestData.generateUser();
+    
+    // Click subscribe button
+    await newsletterPage.subscribe(testUser);
+    
+    // Assert the result
+    const successMessage = await newsletterPage.getSuccessMessage();
+    expect(successMessage).toContain('Message was sent succefully');
+  });
 
-  //Verify message after clicking subscribe successfully
-  await expect(page.locator(selectors.successMessage)).toBeVisible();
+  test('Should show error with invalid email formats @negative', async () => {
+    //subscribe with invalid mail
+    const invalidEmails = TestData.generateInvalidEmails();
+  
+    // Click subscribe button
+    await newsletterPage.subscribe(invalidEmails);
+    
+    // Assert the result
+    const failedMessage = await newsletterPage.getFailedMessage();
+    expect(failedMessage).toContain('Please Enter A Valid Email Address');
+
+  });
 });
