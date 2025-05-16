@@ -58,6 +58,21 @@ This creates: playwright.config.ts and tests/example.spec.ts
 
 Step 4: Project Structure
 
+- pages/: Contains Page Object classes
+
+- tests/: Contains test specifications
+
+- pages/: Page Object
+
+- test-data.ts: Test data generators
+
+- env.ts: base URL
+
+- selectors: xpath of all elements in this page
+
+- playwright.config.ts: Configuration file
+
+
 Step 5: Write a Testscript.
 
 Step 6: Run Tests Locally: npx playwright test --headed
