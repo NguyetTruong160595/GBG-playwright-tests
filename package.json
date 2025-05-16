@@ -1,0 +1,12 @@
+{
+  "name": "playwright-newsletter-tests",
+  "version": "1.0.0",
+  "scripts": {
+    "test": "playwright test"
+  },
+  "devDependencies": {
+    "@playwright/test": "^1.52.0",
+    "@types/node": "^22.15.18",
+    "typescript": "^5.2.2"
+  }
+}
