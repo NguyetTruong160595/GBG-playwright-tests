@@ -6,7 +6,7 @@ import { env } from '../utils/env';
 test('TC-016 Subscribe to newsletter with a valid email @functional', async ({ page }) => {
 
   //Access to Champions League 2025 page
-  await page.goto(env.baseURL);
+  await page.goto(env.baseURL + data.path);
 
   //Click accept button
   await page.waitForSelector(selectors.acceptButton, { state: 'visible' });
