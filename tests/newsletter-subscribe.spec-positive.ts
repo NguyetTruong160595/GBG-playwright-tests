@@ -5,7 +5,7 @@ import { TestData } from '../utils/test-data';
 import { env } from '../utils/env'
 import { beforeEach, afterEach } from '../hooks/testHooks';
 
-test.describe('Newsletter Subscription Tests', () => {
+test.describe('Newsletter Subscription Tests @functional', () => {
 
   let newsletterPage: NewsletterPage;
 
@@ -22,6 +22,7 @@ test.describe('Newsletter Subscription Tests', () => {
     await afterEach(page, testInfo);
   });
 
+
   test('Successful subscription with valid name and email @positive', async () => {
     // Generate random email
     const testUser = TestData.generateUser();
@@ -34,16 +35,4 @@ test.describe('Newsletter Subscription Tests', () => {
     expect(successMessage).toContain('Message was sent succefully');
   });
 
-  test('Should show error with invalid email formats @negative', async () => {
-    //subscribe with invalid mail
-    const invalidEmails = TestData.generateInvalidEmails();
-  
-    // Click subscribe button
-    await newsletterPage.subscribe(invalidEmails);
-    
-    // Assert the result
-    const failedMessage = await newsletterPage.getFailedMessage();
-    expect(failedMessage).toContain('Please Enter A Valid Email Address');
-
-  });
 });
