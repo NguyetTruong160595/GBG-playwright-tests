@@ -28,7 +28,7 @@ jobs:
           path: playwright-report/
           retention-days: 30
 
-  functional-tests:
+  regression-tests:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v4
@@ -37,10 +37,10 @@ jobs:
           node-version: 20
       - run: npm ci
       - run: npx playwright install
-      - run: npx playwright test --grep @functional
+      - run: npx playwright test --grep  @regression
       - uses: actions/upload-artifact@v4
         if: ${{ !cancelled() }}
         with:
-          name: playwright-report-functional
+          name: playwright-report-regression
           path: playwright-report/
           retention-days: 30

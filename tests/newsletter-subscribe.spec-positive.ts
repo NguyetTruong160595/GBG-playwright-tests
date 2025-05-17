@@ -5,7 +5,7 @@ import { TestData } from '../utils/test-data';
 import { env } from '../utils/env'
 import { beforeEach, afterEach } from '../hooks/testHooks';
 
-test.describe('Newsletter Subscription Tests @functional', () => {
+test.describe('Newsletter Subscription Tests @smoke', () => {
 
   let newsletterPage: NewsletterPage;
 

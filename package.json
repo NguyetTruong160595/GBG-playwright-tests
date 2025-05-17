@@ -4,7 +4,7 @@
   "scripts": {
     "test": "npx playwright test",
     "test:smoke": "npx playwright test --grep @smoke",
-    "test:functional": "npx playwright test --grep @functional"
+    "test:regression": "npx playwright test --grep @regression"
   },
   "devDependencies": {
     "@playwright/test": "^1.52.0",
