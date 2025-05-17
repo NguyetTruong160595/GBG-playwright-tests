@@ -23,7 +23,7 @@ test.describe('Newsletter Subscription Tests @smoke', () => {
   });
 
 
-  test('Successful subscription with valid name and email', async () => {
+  test('TC-016: Successful subscription with valid name and email', async () => {
     // Generate random email
     const testUser = TestData.generateUser();
     

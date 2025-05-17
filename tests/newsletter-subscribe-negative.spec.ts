@@ -23,7 +23,7 @@ test.describe('Newsletter Subscription Tests @smoke @regression', () => {
    });
 
 
-  test('Should show error with invalid email formats', async () => {
+  test('TC-045: Should show error with invalid email formats', async () => {
     //subscribe with invalid mail
     const invalidEmails = TestData.generateInvalidEmails();
   
