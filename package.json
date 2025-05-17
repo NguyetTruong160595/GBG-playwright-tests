@@ -2,7 +2,9 @@
   "name": "playwright-champion-league",
   "version": "1.0.0",
   "scripts": {
-    "test": "playwright test"
+    "test": "npx playwright test",
+    "test:smoke": "npx playwright test --grep @smoke",
+    "test:regression": "npx playwright test --grep @functional"
   },
   "devDependencies": {
     "@playwright/test": "^1.52.0",

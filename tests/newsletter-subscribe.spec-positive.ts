@@ -23,7 +23,7 @@ test.describe('Newsletter Subscription Tests @functional', () => {
   });
 
 
-  test('Successful subscription with valid name and email @positive', async () => {
+  test('Successful subscription with valid name and email', async () => {
     // Generate random email
     const testUser = TestData.generateUser();
     
